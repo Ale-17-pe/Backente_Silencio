@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel El Silencio - Iniciar Sesión</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <a href="index.html">
+        <img src="Recursos/Imagenes/logo.png" alt="Silencio">
+    </a>
+</header>
+<div class="login-container">
+    <i class="fas fa-crown decoration-element decoration-1"></i>
+    <i class="fas fa-feather-alt decoration-element decoration-2"></i>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/3179/3179068.png" alt="Hotel Logo" class="hotel-logo">
+    <h2>Hotel El Silencio</h2>
+    <p class="tagline">Donde el lujo se encuentra con la tranquilidad</p>
+
+    <form th:action="@{/login}" method="post">
+        <div class="mb-4">
+            <label class="form-label"><i class="fas fa-user"></i>Usuario</label>
+            <div class="input-icon">
+                <i class="fas fa-user"></i>
+                <input type="text" class="form-control" name="username" placeholder="Ingrese su usuario" required>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="form-label"><i class="fas fa-lock"></i>Contraseña</label>
+            <div class="input-icon">
+                <i class="fas fa-lock"></i>
+                <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-login w-100 mb-3">Iniciar Sesión</button>
+
+        <div class="additional-links">
+            <a href="#">¿Olvidaste tu contraseña?</a> •
+            <a href="#">Solicitar acceso</a>
+        </div>
+    </form>
+
+    <div class="silence-features mt-4">
+        <div class="feature">
+            <i class="fas fa-spa"></i>
+            <p>Ambiente Sereno</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <p>Privacidad Total</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-concierge-bell"></i>
+            <p>Servicio Exclusivo</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        &copy; 2025 Hotel El Silencio. Todos los derechos reservados.
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
