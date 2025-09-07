@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <title>Lista de Habitaciones</title>
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <body>
-<h1>Lista de Habitaciones</h1>
+<div class="card shadow p-4">
+    <h1 class="mb-4 text-center">🏨 Lista de Habitaciones</h1>
+    
+    <div class="d-flex justify-content-between mb-3">
+        <a class="btn btn-primary" th:href="@{/habitaciones/nuevo}">➕ Agregar Habitación</a>
+        <a class="btn btn-secondary" th:href="@{/}">⬅️ Volver al inicio</a>
+    </div>
 
-<table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="habitacionModel : ${habitaciones}">
-        <td th:text="${habitacionModel.id}">1</td>
-        <td th:text="${habitacionModel.nombre}">Habitación A</td>
-        <td>
-            <a th:href="@{/habitaciones/editar/{id}(id=${habitacionModel.id})}">Editar</a> |
-            <a th:href="@{/habitaciones/eliminar/{id}(id=${habitacionModel.id})}">Eliminar</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<br/>
-<a th:href="@{/habitaciones/nueva}">➕ Nueva Habitación</a>
+    <table class="table table-hover table-bordered align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Número</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="hab : ${habitaciones}">
+                <td th:text="${hab.numero}"></td>
+                <td th:text="${hab.tipo}"></td>
+                <td th:text="${#numbers.formatDecimal(hab.precio, 1, 'POINT', 2, 'NONE')} + ' $'"></td>
+                <td>
+                    <span th:text="${hab.estado}" 
+                          th:classappend="${hab.estado == 'disponible'} ? 'badge bg-success' 
+                                        : ${hab.estado == 'ocupada'} ? 'badge bg-danger' 
+                                        : 'badge bg-warning text-dark'">
+                    </span>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-warning" th:href="@{'/habitaciones/editar/' + ${hab.id}}">✏️ Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{'/habitaciones/eliminar/' + ${hab.id}}"
+                       onclick="return confirm('¿Estás seguro de eliminar esta habitación?');">
+                       🗑️ Eliminar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

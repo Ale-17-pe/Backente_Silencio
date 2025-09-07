@@ -26,13 +26,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/", "/login", "/habitaciones/nuevo", "/registro", "/habitaciones", "/css/**",
+                                "/js/**", "/images/**")
+                        .permitAll()
                         .requestMatchers("/usuarios/**", "/admin/**").hasRole("ADMIN")
                         .requestMatchers("/reservas/**", "/empleado/**").hasAnyRole("ADMIN", "EMPLEADO")
                         .requestMatchers("/mis-reservas/**", "/clientes/**").hasRole("CLIENTE")
                         .requestMatchers("/habitaciones/**").authenticated()
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
@@ -40,8 +41,7 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
-                        .permitAll()
-                );
+                        .permitAll());
 
         return http.build();
     }
@@ -63,23 +63,23 @@ public class SecurityConfig {
         };
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails admin = User.withUsername("admin")
-                .password("{noop}admin123") // {noop} = sin encriptar (solo pruebas)
-                .roles("ADMIN")
-                .build();
+    // @Bean
+    // public UserDetailsService userDetailsService() {
+    // UserDetails admin = User.withUsername("admin")
+    // .password("{noop}admin123") // {noop} = sin encriptar (solo pruebas)
+    // .roles("ADMIN")
+    // .build();
 
-        UserDetails empleado = User.withUsername("empleado")
-                .password("{noop}empleado123")
-                .roles("EMPLEADO")
-                .build();
+    // UserDetails empleado = User.withUsername("empleado")
+    // .password("{noop}empleado123")
+    // .roles("EMPLEADO")
+    // .build();
 
-        UserDetails cliente = User.withUsername("cliente")
-                .password("{noop}cliente123")
-                .roles("CLIENTE")
-                .build();
+    // UserDetails cliente = User.withUsername("cliente")
+    // .password("{noop}cliente123")
+    // .roles("CLIENTE")
+    // .build();
 
-        return new InMemoryUserDetailsManager(admin, empleado, cliente);
-    }
+    // return new InMemoryUserDetailsManager(admin, empleado, cliente);
+    // }
 }
