@@ -10,5 +10,5 @@ public interface ClienteService {
     Optional<ClienteModel> findById(Long id);
     Optional<ClienteModel> findByDni(String dni);
     ClienteModel save(ClienteModel cliente);
-    void delete(Long id);
+    void deleteById(Long id);
 }

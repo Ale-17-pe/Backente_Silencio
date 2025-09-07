@@ -46,7 +46,7 @@ public class ReservaController {
     }
     @GetMapping("/eliminar/{id}")
     public String eliminarReserva(@PathVariable Long id) {
-        reservaService.delete(id);
+        reservaService.deleteById(id);
         return "redirect:/reservas";
     }
 }

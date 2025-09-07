@@ -8,5 +8,5 @@ public interface PagoService {
     Optional<PagoModel> findById(Long id);
     List<PagoModel> findByReservaId(Long reservaId);
     PagoModel save(PagoModel pago);
-    void delete(Long id);
+    void deleteByiId(Long id);
 }

@@ -39,7 +39,7 @@ public class HabitacionServiceImpl implements HabitacionService{
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         habitacionRepository.deleteById(id);
     }
 }

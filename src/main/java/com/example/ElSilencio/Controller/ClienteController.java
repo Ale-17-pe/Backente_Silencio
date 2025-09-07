@@ -46,7 +46,7 @@ public class ClienteController {
     // Eliminar cliente
     @GetMapping("/eliminar/{id}")
     public String eliminarCliente(@PathVariable Long id) {
-        clienteService.delete(id);
+        clienteService.deleteById(id);
         return "redirect:/clientes";
     }
 }

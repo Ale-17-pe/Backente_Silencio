@@ -54,7 +54,7 @@ public class PagoController {
     // Eliminar pago
     @GetMapping("/eliminar/{id}")
     public String eliminarPago(@PathVariable Long id) {
-        pagoService.delete(id);
+        pagoService.deleteByiId(id);
         return "redirect:/pagos";
     }
 }

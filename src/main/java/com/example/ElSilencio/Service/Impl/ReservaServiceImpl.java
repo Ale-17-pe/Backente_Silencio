@@ -18,26 +18,21 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Override
     public List<ReservaModel> findAll() {
-        return reservaRepository.findAll();
+        return List.of();
     }
 
     @Override
     public Optional<ReservaModel> findById(Long id) {
-        return reservaRepository.findById(id);
-    }
-
-    @Override
-    public List<ReservaModel> findByEstado(String estado) {
-        return reservaRepository.findByEstado(estado);
+        return Optional.empty();
     }
 
     @Override
     public ReservaModel save(ReservaModel reserva) {
-        return reservaRepository.save(reserva);
+        return null;
     }
 
     @Override
-    public void delete(Long id) {
-        reservaRepository.deleteById(id);
+    public void deleteById(Long id) {
+
     }
 }

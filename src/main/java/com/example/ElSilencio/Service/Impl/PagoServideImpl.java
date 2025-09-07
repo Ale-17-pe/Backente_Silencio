@@ -16,6 +16,7 @@ public class PagoServideImpl implements PagoService {
         this.pagoRepository = pagoRepository;
     }
 
+
     @Override
     public List<PagoModel> findAll() {
         return pagoRepository.findAll();
@@ -37,7 +38,8 @@ public class PagoServideImpl implements PagoService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteByiId(Long id) {
         pagoRepository.deleteById(id);
     }
+
 }

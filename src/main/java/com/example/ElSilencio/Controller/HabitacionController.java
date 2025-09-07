@@ -42,7 +42,7 @@ public class HabitacionController {
     }
     @GetMapping("/eliminar/{id}")
     public String eliminarHabitacion(@PathVariable Long id) {
-        habitacionService.delete(id);
+        habitacionService.deleteById(id);
         return "redirect:/habitaciones";
     }
 }

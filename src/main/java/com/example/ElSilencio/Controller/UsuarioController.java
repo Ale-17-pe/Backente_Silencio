@@ -48,7 +48,7 @@ public class UsuarioController {
     // Eliminar usuario
     @GetMapping("/eliminar/{id}")
     public String eliminarUsuario(@PathVariable Long id) {
-        usuarioService.delete(id);
+        usuarioService.deleteById(id);
         return "redirect:/usuarios";
     }
 

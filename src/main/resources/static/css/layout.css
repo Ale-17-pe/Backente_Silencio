@@ -1,0 +1,166 @@
+:root {
+            --midnight-blue: #0A174E;
+            --gold-leaf: #D4AF37;
+            --soft-ivory: #F5F5F0;
+            --charcoal-gray: #2C2C2C;
+            --deep-teal: #1B3B6F;
+            --silver-mist: #E8E8E8;
+            --dark-navy: #050A30;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--midnight-blue), var(--dark-navy)) !important;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+            padding: 0.6rem 1rem;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--gold-leaf) !important;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand i {
+            margin-right: 10px;
+            font-size: 1.6rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--silver-mist) !important;
+            font-weight: 500;
+            padding: 0.8rem 1.1rem !important;
+            margin: 0 0.1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav .nav-link i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--gold-leaf) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link.disabled {
+            color: var(--gold-leaf) !important;
+            opacity: 0.9;
+            font-weight: 600;
+            cursor: default;
+        }
+
+        .navbar-nav .nav-link.disabled:hover {
+            background-color: transparent;
+            transform: none;
+        }
+
+        .navbar-toggler {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.4rem 0.6rem;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(212, 175, 55, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+        }
+
+        .dropdown-menu {
+            background-color: var(--midnight-blue);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-item {
+            color: var(--silver-mist);
+            padding: 0.7rem 1.2rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item i {
+            margin-right: 8px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--gold-leaf);
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .user-welcome {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+            color: var(--gold-leaf);
+            font-weight: 600;
+        }
+
+        .user-welcome i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .badge-role {
+            background: linear-gradient(135deg, var(--gold-leaf), #B8860B);
+            color: var(--midnight-blue);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav {
+                padding: 1rem 0;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+            }
+
+            .user-welcome {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* Animación suave para la barra de navegación */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar {
+            animation: fadeInDown 0.5s ease-out;
+        }

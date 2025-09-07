@@ -38,7 +38,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         clienteRepository.deleteById(id);
 
     }

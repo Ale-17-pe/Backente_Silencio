@@ -10,5 +10,5 @@ public interface HabitacionService {
     Optional<HabitacionModel> findById(Long id);
     List<HabitacionModel> findByEstado(String estado);
     HabitacionModel save(HabitacionModel habitacion);
-    void delete(Long id);
+    void deleteById(Long id);
 }
