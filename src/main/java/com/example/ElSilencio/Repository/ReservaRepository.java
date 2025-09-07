@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface ReservaRepository extends JpaRepository<ReservaModel, Long> {
     List<ReservaModel> findByEstado(String estado);
-
 }

@@ -6,6 +6,7 @@ import java.util.*;
 
 public interface ReservaService {
     List<ReservaModel> findAll();
+    List<ReservaModel> findByEstado(String estado);
     Optional<ReservaModel> findById(Long id);
     ReservaModel save(ReservaModel reserva);
     void deleteById(Long id);

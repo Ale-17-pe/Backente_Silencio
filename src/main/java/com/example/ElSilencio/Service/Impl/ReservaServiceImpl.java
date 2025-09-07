@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Service.Impl;
 
-import com.example.ElSilencio.Model.ReservaModel;
+import com.example.ElSilencio.Model.*;
 import com.example.ElSilencio.Repository.ReservaRepository;
 import com.example.ElSilencio.Service.ReservaService;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,11 @@ public class ReservaServiceImpl implements ReservaService {
     @Override
     public List<ReservaModel> findAll() {
         return reservaRepository.findAll();
+    }
+
+    @Override
+    public List<ReservaModel> findByEstado(String estado) {
+        return reservaRepository.findByEstado(estado);
     }
 
     @Override
