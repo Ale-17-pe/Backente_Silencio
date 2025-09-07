@@ -49,4 +49,16 @@ public class ClienteController {
         clienteService.deleteById(id);
         return "redirect:/clientes";
     }
+    @GetMapping("/registro")
+    public String mostrarFormularioRegistro(Model model) {
+        model.addAttribute("cliente", new ClienteModel());
+        return "cliente/registro";
+    }
+
+    @PostMapping("/registrar")
+    public String registrarCliente(@ModelAttribute ClienteModel cliente) {
+        clienteService.save(cliente);
+        return "redirect:/login"; // Después de registrarse, va al login
+    }
+
 }

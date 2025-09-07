@@ -6,7 +6,7 @@
 <body>
 <div class="card shadow p-4">
     <h1 class="mb-4 text-center">🏨 Lista de Habitaciones</h1>
-    
+
     <div class="d-flex justify-content-between mb-3">
         <a class="btn btn-primary" th:href="@{/habitaciones/nuevo}">➕ Agregar Habitación</a>
         <a class="btn btn-secondary" th:href="@{/}">⬅️ Volver al inicio</a>
@@ -28,9 +28,9 @@
                 <td th:text="${hab.tipo}"></td>
                 <td th:text="${#numbers.formatDecimal(hab.precio, 1, 'POINT', 2, 'NONE')} + ' $'"></td>
                 <td>
-                    <span th:text="${hab.estado}" 
-                          th:classappend="${hab.estado == 'disponible'} ? 'badge bg-success' 
-                                        : ${hab.estado == 'ocupada'} ? 'badge bg-danger' 
+                    <span th:text="${hab.estado}"
+                          th:classappend="${hab.estado == 'disponible'} ? 'badge bg-success'
+                                        : ${hab.estado == 'ocupada'} ? 'badge bg-danger'
                                         : 'badge bg-warning text-dark'">
                     </span>
                 </td>

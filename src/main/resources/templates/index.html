@@ -205,7 +205,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <!-- Opción visible para todos los usuarios autenticados -->
-                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <li class="nav-item" >
                         <a class="nav-link" th:href="@{/habitaciones}">
                             <i class="fas fa-bed"></i>Habitaciones
                         </a>
@@ -235,7 +235,8 @@
 
                     <!-- Opción para clientes -->
                     <li class="nav-item" sec:authorize="hasRole('CLIENTE')">
-                        <a class="nav-link" th:href="@{/mis-reservas}">
+                        <a class="nav-link" th:href="@{/reservas
+                        }">
                             <i class="fas fa-suitcase"></i>Mis Reservas
                         </a>
                     </li>
@@ -288,7 +289,7 @@
 
                     <!-- Opción de registro para invitados -->
                     <li class="nav-item" sec:authorize="isAnonymous()">
-                        <a class="nav-link" th:href="@{/registro}">
+                        <a class="nav-link" th:href="@{/clientes/registro}">
                             <i class="fas fa-user-plus"></i>Registrarse
                         </a>
                     </li>
@@ -372,8 +373,8 @@
                 <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-tripadvisor"></i></a>
             </div>
-            <p>© 2023 Hotel El Silencio. Todos los derechos reservados.</p>
-            <p class="mb-0">Calle Serenidad 123, 28000 Madrid, España</p>
+            <p>© 2025 Hotel El Silencio. Todos los derechos reservados.</p>
+            <p class="mb-0">Calle mi casa/p>
         </div>
     </footer>
 

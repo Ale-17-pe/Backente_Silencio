@@ -14,8 +14,24 @@ public class ClienteModel {
     private Long id;
 
     @JoinColumn(nullable = false)
-    private String nombre, apellido, dni, email, telefono;
+    private String nombre, apellido, dni, email, telefono, username,password;
 /*
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public ClienteModel() {
     }
 

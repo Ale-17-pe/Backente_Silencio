@@ -1,33 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${cliente.id != null} ? 'Editar Cliente' : 'Nuevo Cliente'">Cliente</title>
+    <meta charset="UTF-8">
+    <title>Registro de Cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="container mt-4">
-    <h2 th:text="${cliente.id != null} ? 'Editar Cliente' : 'Nuevo Cliente'"></h2>
-    <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
-        <input type="hidden" th:field="*{id}" />
-        <div class="mb-3">
-            <label class="form-label">DNI</label>
-            <input type="text" th:field="*{dni}" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input type="text" th:field="*{nombre}" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" th:field="*{email}" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Teléfono</label>
-            <input type="text" th:field="*{telefono}" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <a href="/clientes" class="btn btn-secondary">Cancelar</a>
-    </form>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Registro de Cliente</h2>
+
+        <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" th:field="*{nombre}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" th:field="*{apellido}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">DNI</label>
+                <input type="text" th:field="*{dni}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Correo electrónico</label>
+                <input type="email" th:field="*{email}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" th:field="*{telefono}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input type="text" th:field="*{username}" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" th:field="*{password}" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        </form>
+    </div>
 </div>
+
 </body>
 </html>
