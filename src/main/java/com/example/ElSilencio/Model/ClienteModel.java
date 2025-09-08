@@ -1,40 +1,59 @@
 package com.example.ElSilencio.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
+@Data
 @Table(name = "clientes")
-@Getter @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(nullable = false)
-    private String nombre, apellido, dni, email, telefono, username,password;
-/*
-    public String getUsername() {
-        return username;
-    }
+    @NotBlank(message = "El nombre es obligatorio")
+    @Column(nullable = false)
+    private String nombre;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    @NotBlank(message = "El apellido es obligatorio")
+    @Column(nullable = false)
+    private String apellido;
 
-    public String getPassword() {
-        return password;
-    }
+    @NotBlank(message = "El DNI es obligatorio")
+    @Column(nullable = false, unique = true)
+    private String dni;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    @NotBlank(message = "El email es obligatorio")
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "telefono")
+    private String telefono;
+
+    @NotBlank(message = "El username es obligatorio")
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Column(nullable = false)
+    private String password;
 
     public ClienteModel() {
     }
 
+    public ClienteModel(String nombre, String apellido, String dni, String email,
+                        String telefono, String username, String password) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
+        this.telefono = telefono;
+        this.username = username;
+        this.password = password;
+    }
+
+    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -82,5 +101,20 @@ public class ClienteModel {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
- */
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

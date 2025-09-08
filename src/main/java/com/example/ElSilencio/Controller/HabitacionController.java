@@ -24,7 +24,7 @@ public class HabitacionController {
 
     @GetMapping("/nuevo")
     public String nuevaHabitacionForm(Model model) {
-        model.addAttribute("habitacion", new HabitacionModel());
+        model.addAttribute("habitación", new HabitacionModel());
         return "habitaciones/form";
     }
 
@@ -37,7 +37,7 @@ public class HabitacionController {
     public String editarHabitacion(@PathVariable Long id, Model model) {
         HabitacionModel habitacion = habitacionService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
-        model.addAttribute("habitacion", habitacion);
+        model.addAttribute("habitación", habitacion);
         return "habitaciones/form";
     }
     @GetMapping("/eliminar/{id}")
