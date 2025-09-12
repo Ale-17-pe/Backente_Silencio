@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "habitaciones")
@@ -21,13 +23,16 @@ public class HabitacionModel {
     private String numero;
 
     @Column(nullable = false, length = 50)
-    private String tipo; // simple, doble, suite
+    private String tipo;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
 
     @Column(nullable = false)
     private String estado;
+
+    @OneToMany(mappedBy = "habitacion", cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ReservaModel> reservas = new ArrayList<>();
 /*
     public HabitacionModel(Long id, String tipo, String numero, BigDecimal precio, String estado) {
         this.id = id;

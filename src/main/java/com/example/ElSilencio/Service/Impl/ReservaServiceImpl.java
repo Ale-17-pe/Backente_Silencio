@@ -5,6 +5,7 @@ import com.example.ElSilencio.Repository.ReservaRepository;
 import com.example.ElSilencio.Service.ReservaService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +23,6 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public List<ReservaModel> findByEstado(String estado) {
-        return reservaRepository.findByEstado(estado);
-    }
-
-    @Override
     public Optional<ReservaModel> findById(Long id) {
         return reservaRepository.findById(id);
     }
@@ -40,4 +36,25 @@ public class ReservaServiceImpl implements ReservaService {
     public void deleteById(Long id) {
         reservaRepository.deleteById(id);
     }
+
+    @Override
+    public List<ReservaModel> findByClienteId(Long clienteId) {
+        return reservaRepository.findByClienteId(clienteId);
+    }
+
+    @Override
+    public List<ReservaModel> findByHabitacionId(Long habitacionId) {
+        return reservaRepository.findByHabitacionId(habitacionId);
+    }
+
+    @Override
+    public List<ReservaModel> findByEstado(String estado) {
+        return reservaRepository.findByEstado(estado);
+    }
+
+    @Override
+    public List<ReservaModel> findByFechaInicioBetween(LocalDate fechasInicio, LocalDate fechaFin) {
+        return reservaRepository.findByFechaInicioBetween(fechasInicio, fechaFin);
+    }
+
 }

@@ -4,13 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "reservas")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class ReservaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,9 @@ public class ReservaModel {
 
     @Column(length = 20, nullable = false)
     private String estado;
+
+    @OneToMany(mappedBy = "reserva",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<PagoModel> pagos = new ArrayList<>();
 /*
     public ClienteModel getCliente() {
         return cliente;

@@ -28,7 +28,7 @@ public class PagoModel {
     private String metodo;
 
     @Column(name = "fecha_pago", nullable = false)
-    private LocalDateTime fechaPago;
+    private LocalDateTime fechaPago = LocalDateTime.now();
 /*
     public PagoModel(Long id, ReservaModel reserva, BigDecimal monto, String metodo, LocalDateTime fechaPago) {
         this.id = id;

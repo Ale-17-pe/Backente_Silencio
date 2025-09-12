@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${habitacion.id != null} ? 'Editar Habitación' : 'Nueva Habitación'">Habitación</title>
+    <title>Pagos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="container mt-4">
-    <h2 th:text="${habitacion.id != null} ? 'Editar Habitación' : 'Nueva Habitación'"></h2>
-    <form th:action="@{/habitaciones/guardar}" th:object="${habitacion}" method="post">
-        <input type="hidden" th:field="*{id}" />
-        <div class="mb-3">
-            <label class="form-label">Número</label>
-            <input type="text" th:field="*{numero}" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Tipo</label>
-            <input type="text" th:field="*{tipo}" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Precio</label>
-            <input type="number" step="0.01" th:field="*{precio}" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Estado</label>
-            <select th:field="*{estado}" class="form-select" required>
-                <option value="disponible">Disponible</option>
-                <option value="ocupada">Ocupada</option>
-                <option value="limpieza">Limpieza</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <a href="/habitaciones" class="btn btn-secondary">Cancelar</a>
-    </form>
-</div>
+<body class="container mt-5">
+
+<h2 class="mb-4">Lista de Pagos</h2>
+<a th:href="@{/pagos/nuevo}" class="btn btn-primary mb-3">Registrar Pago</a>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Reserva</th>
+        <th>Monto</th>
+        <th>Método</th>
+        <th>Fecha de Pago</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pago : ${pagos}">
+        <td th:text="${pago.id}"></td>
+        <td th:text="${pago.reserva.id}"></td>
+        <td th:text="${pago.monto}"></td>
+        <td th:text="${pago.metodo}"></td>
+        <td th:text="${#temporals.format(pago.fechaPago, 'dd/MM/yyyy HH:mm')}"></td>
+        <td>
+            <a th:href="@{/pagos/editar/{id}(id=${pago.id})}" class="btn btn-warning btn-sm">Editar</a>
+            <a th:href="@{/pagos/eliminar/{id}(id=${pago.id})}"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm('¿Seguro que deseas eliminar este pago?');">
+                Eliminar
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

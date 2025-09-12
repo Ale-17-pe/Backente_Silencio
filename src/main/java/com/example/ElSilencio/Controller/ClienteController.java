@@ -2,37 +2,60 @@ package com.example.ElSilencio.Controller;
 
 import com.example.ElSilencio.Model.ClienteModel;
 import com.example.ElSilencio.Service.ClienteService;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.naming.Binding;
 
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
+
     private final ClienteService clienteService;
 
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
+
     @GetMapping
     public String listarClientes(Model model) {
         model.addAttribute("clientes", clienteService.findAll());
         return "clientes/lista";
     }
 
-    // Formulario de nuevo cliente
     @GetMapping("/nuevo")
     public String nuevoClienteForm(Model model) {
         model.addAttribute("cliente", new ClienteModel());
         return "clientes/form";
     }
 
-    // Guardar cliente
+    // Guardar cliente y lo actuliza
     @PostMapping("/guardar")
-    public String guardarCliente(@ModelAttribute ClienteModel cliente) {
+    public String guardarCliente(@Valid @ModelAttribute("cliente") ClienteModel cliente,
+                                 BindingResult result,
+                                 Model model,
+                                 HttpSession session)  {
+        if (result.hasErrors()) {
+            return "clientes/form";
+        }
+
+        if (cliente.getId() == null && clienteService.existsByDni(cliente.getDni())) {
+            model.addAttribute("error", "El DNI ya está registrado.");
+            return "clientes/form";
+        }
+
         clienteService.save(cliente);
-        return "redirect:/clientes";
+
+        // Login automático
+        session.setAttribute("usuarioLogueado", cliente);
+
+        return "redirect:/"; // redirige al home
     }
+
 
     // Editar cliente
     @GetMapping("/editar/{id}")
@@ -49,16 +72,12 @@ public class ClienteController {
         clienteService.deleteById(id);
         return "redirect:/clientes";
     }
-    @GetMapping("/registro")
+
+    @GetMapping("/registrar")
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("cliente", new ClienteModel());
-        return "cliente/registro";
+        return "clientes/form";
     }
 
-    @PostMapping("/registrar")
-    public String registrarCliente(@ModelAttribute ClienteModel cliente) {
-        clienteService.save(cliente);
-        return "redirect:/login"; // Después de registrarse, va al login
-    }
 
 }

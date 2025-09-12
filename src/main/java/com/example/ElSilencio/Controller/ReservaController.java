@@ -2,9 +2,12 @@ package com.example.ElSilencio.Controller;
 
 import com.example.ElSilencio.Model.ReservaModel;
 import com.example.ElSilencio.Service.*;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("reservas")
@@ -31,7 +34,12 @@ public class ReservaController {
         return "reservas/form";
     }
     @PostMapping("/guardar")
-    public String guardarReserva(@ModelAttribute ReservaModel reserva) {
+    public String guardarReserva(@Valid @ModelAttribute("reserva") ReservaModel reserva, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("clientes", clienteService.findAll());
+            model.addAttribute("habitaciones", habitacionService.findAll());
+            return "reservas/form";
+        }
         reservaService.save(reserva);
         return "redirect:/reservas";
     }

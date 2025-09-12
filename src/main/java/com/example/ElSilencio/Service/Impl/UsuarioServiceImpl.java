@@ -29,6 +29,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public UsuarioModel findByUsername(String username) {
+        return usuarioRepository.findByUsername(username).orElse(null);
+    }
+
+    @Override
     public UsuarioModel save(UsuarioModel usuario) {
         return usuarioRepository.save(usuario);
     }
@@ -36,5 +41,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public void deleteById(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return usuarioRepository.existsByUsername(username);
     }
 }

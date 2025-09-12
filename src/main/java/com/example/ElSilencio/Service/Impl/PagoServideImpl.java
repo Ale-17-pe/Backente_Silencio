@@ -5,6 +5,7 @@ import com.example.ElSilencio.Repository.PagoRepository;
 import com.example.ElSilencio.Service.PagoService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,16 @@ public class PagoServideImpl implements PagoService {
     @Override
     public List<PagoModel> findByReservaId(Long reservaId) {
         return pagoRepository.findByReservaId(reservaId);
+    }
+
+    @Override
+    public List<PagoModel> findByMetodo(String metodo) {
+        return pagoRepository.findByMetodo(metodo);
+    }
+
+    @Override
+    public List<PagoModel> findByFechaPagoBetween(LocalDateTime inicio, LocalDateTime fin) {
+        return pagoRepository.findByFechaPagoBetween(inicio,fin);
     }
 
     @Override

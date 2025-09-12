@@ -33,6 +33,16 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public Optional<ClienteModel> findByUsername(String username) {
+        return clienteRepository.findByUsername(username);
+    }
+
+    @Override
+    public Optional<ClienteModel> findByEmail(String email) {
+        return clienteRepository.findByEmail(email);
+    }
+
+    @Override
     public ClienteModel save(ClienteModel cliente) {
         return clienteRepository.save(cliente);
     }
@@ -42,4 +52,20 @@ public class ClienteServiceImpl implements ClienteService {
         clienteRepository.deleteById(id);
 
     }
+
+    @Override
+    public boolean existsByDni(String dni) {
+        return clienteRepository.existsByDni(dni);
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return clienteRepository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return clienteRepository.existsByEmail(email);
+    }
+
 }

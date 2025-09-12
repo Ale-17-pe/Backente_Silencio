@@ -7,6 +7,8 @@ import java.util.Optional;
 public interface UsuarioService {
     List<UsuarioModel> findAll();
     Optional<UsuarioModel> findById(Long id);
-    UsuarioModel save(UsuarioModel usuarioModel);
+    UsuarioModel findByUsername(String username);
+    UsuarioModel save(UsuarioModel usuario);
     void deleteById(Long id);
+    boolean existsByUsername(String username);
 }

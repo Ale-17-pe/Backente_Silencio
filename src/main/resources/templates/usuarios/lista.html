@@ -1,10 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="container mt-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <i class="fas fa-crown"></i>Hotel El Silencio
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Opción visible para todos los usuarios autenticados -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/habitaciones}">
+                        <i class="fas fa-bed"></i>Habitaciones
+                    </a>
+                </li>
+
+                <!-- Menú desplegable para empleados -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="empleadoDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-concierge-bell"></i>Gestión
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
+                        <li><a class="dropdown-item" th:href="@{/reservas}">
+                            <i class="fas fa-calendar-check"></i>Reservas
+                        </a></li>
+                        <li><a class="dropdown-item" th:href="@{/clientes}">
+                            <i class="fas fa-users"></i>Clientes
+                        </a></li>
+                        <li><a class="dropdown-item" th:href="@{/checkin}">
+                            <i class="fas fa-sign-in-alt"></i>Check-in
+                        </a></li>
+                        <li><a class="dropdown-item" th:href="@{/checkout}">
+                            <i class="fas fa-sign-out-alt"></i>Check-out
+                        </a></li>
+                    </ul>
+                </li>
+
+                <!-- Opción para clientes -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mis-reservas}">
+                        <i class="fas fa-suitcase"></i>Mis Reservas
+                    </a>
+                </li>
+
+                <!-- Menú desplegable para administradores -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-cogs"></i>Administración
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" th:href="@{/usuarios}">
+                            <i class="fas fa-user-cog"></i>Usuarios
+                        </a></li>
+                        <li><a class="dropdown-item" th:href="@{/habitaciones/admin}">
+                            <i class="fas fa-bed"></i>Gestión de Habitaciones
+                        </a></li>
+                        <li><a class="dropdown-item" th:href="@{/reportes}">
+                            <i class="fas fa-chart-bar"></i>Reportes
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/configuracion}">
+                            <i class="fas fa-sliders-h"></i>Configuración
+                        </a></li>
+                    </ul>
+                </li>
+
+                <!-- Mostrar nombre de usuario logueado -->
+                <li class="nav-item" >
+                    <div class="user-welcome">
+                        <i class="fas fa-user-circle"></i>
+                        <span></span>
+                        <span class="badge-role"></span>
+                    </div>
+                </li>
+
+                <!-- Botón de logout -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">
+                        <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
+                    </a>
+                </li>
+
+                <!-- Mostrar login solo a invitados -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">
+                        <i class="fas fa-sign-in-alt"></i>Iniciar Sesión
+                    </a>
+                </li>
+
+                <!-- Opción de registro para invitados -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/registro}">
+                        <i class="fas fa-user-plus"></i>Registrarse
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h2 class="mb-4">Lista de Usuarios</h2>
+<a th:href="@{/usuarios/nuevo}" class="btn btn-primary mb-3">Nuevo Usuario</a>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.id}"></td>
+        <td th:text="${usuario.username}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.rol}"></td>
+        <td>
+            <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}" class="btn btn-warning btn-sm">Editar</a>
+            <a th:href="@{/usuarios/eliminar/{id}(id=${usuario.id})}"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm('¿Seguro que deseas eliminar este usuario?');">
+                Eliminar
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

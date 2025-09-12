@@ -3,42 +3,138 @@
 <head>
     <title>Registro de Cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/registro.css}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-5">
 
-    <h2 class="mb-4">Crear cuenta</h2>
-    <form th:action="@{/auth/registro}" method="post">
 
-        <!-- Datos de usuario -->
-        <div class="mb-3">
-            <label>Usuario</label>
-            <input type="text" name="username" class="form-control" required />
-        </div>
-        <div class="mb-3">
-            <label>Contraseña</label>
-            <input type="password" name="password" class="form-control" required />
+
+<div class="register-container">
+    <!-- Elementos decorativos -->
+    <div class="decoration-element decoration-1">
+        <i class="fas fa-crown"></i>
+    </div>
+    <div class="decoration-element decoration-2">
+        <i class="fas fa-star"></i>
+    </div>
+
+    <!-- Logo del hotel -->
+    <div class="hotel-logo">
+        <i class="fas fa-hotel" style="font-size: 3rem; color: var(--dark-navy);"></i>
+    </div>
+
+    <h2>Crear Cuenta</h2>
+    <p class="tagline">Únete a nuestra comunidad exclusiva</p>
+
+    <!-- Formulario de registro -->
+    <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+        <!-- Sección de datos de usuario -->
+        <div class="form-section">
+            <h4 class="section-title">
+                <i class="fas fa-user-lock"></i> Datos de acceso
+            </h4>
+            <div class="mb-4">
+                <label class="form-label">
+                    <i class="fas fa-user"></i> Usuario
+                </label>
+                <div class="input-icon">
+                    <i class="fas fa-at"></i>
+                    <input type="text" th:field="*{usuario.username}" class="form-control" required maxlength="50" placeholder="Nombre de usuario"/>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">
+                    <i class="fas fa-key"></i> Contraseña
+                </label>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" th:field="*{usuario.password}" class="form-control" required minlength="6" placeholder="Mínimo 6 caracteres"/>
+                </div>
+            </div>
         </div>
 
-        <!-- Datos de cliente -->
-        <div class="mb-3">
-            <label>Nombre</label>
-            <input type="text" name="nombre" class="form-control" required />
-        </div>
-        <div class="mb-3">
-            <label>Apellido</label>
-            <input type="text" name="apellido" class="form-control" required />
-        </div>
-        <div class="mb-3">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" required />
-        </div>
-        <div class="mb-3">
-            <label>Teléfono</label>
-            <input type="text" name="telefono" class="form-control" />
+        <!-- Sección de datos personales -->
+        <div class="form-section">
+            <h4 class="section-title">
+                <i class="fas fa-id-card"></i> Datos personales
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fas fa-id-card"></i> DNI
+                        </label>
+                        <div class="input-icon">
+                            <i class="fas fa-address-card"></i>
+                            <input type="text" th:field="*{dni}" class="form-control" required maxlength="8" placeholder="Número de DNI"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fas fa-phone"></i> Teléfono
+                        </label>
+                        <div class="input-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                            <input type="text" th:field="*{telefono}" class="form-control" placeholder="Número de contacto"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fas fa-signature"></i> Nombre
+                        </label>
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" th:field="*{nombre}" class="form-control" required placeholder="Tu nombre"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fas fa-signature"></i> Apellido
+                        </label>
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" th:field="*{apellido}" class="form-control" required placeholder="Tu apellido"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">
+                    <i class="fas fa-envelope"></i> Email
+                </label>
+                <div class="input-icon">
+                    <i class="fas fa-at"></i>
+                    <input type="email" th:field="*{email}" class="form-control" required placeholder="correo@ejemplo.com"/>
+                </div>
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Registrarme</button>
+        <button type="submit" class="btn-register">Registrarme</button>
     </form>
+
+    <div class="additional-links">
+        <p>¿Ya tienes una cuenta? <a th:href="@{/login}">Inicia sesión aquí</a></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

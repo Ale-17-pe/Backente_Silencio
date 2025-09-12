@@ -19,10 +19,18 @@ public class UsuarioModel {
     private String username;
 
     @Column(nullable = false, length = 255)
-    private String password; // almacenar BCrypt (recomendado) o {noop} para pruebas
+    private String password;
 
     @Column(nullable = false, length = 20)
     private String rol;
+
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
+
+
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private ClienteModel cliente;
+
 /*
     public UsuarioModel() {
     }

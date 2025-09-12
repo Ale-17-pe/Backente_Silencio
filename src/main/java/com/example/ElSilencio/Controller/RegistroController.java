@@ -30,15 +30,12 @@ public class RegistroController {
 
     @PostMapping("/registro")
     public String registrar(@ModelAttribute UsuarioModel usuarioModel, @ModelAttribute ClienteModel clienteModel) {
-        // Encriptar contraseña
-
-        // Guardar usuario
         UsuarioModel usuarioGuardado = usuarioService.save(usuarioModel);
 
         // Asociar cliente con usuario
         clienteModel.setNombre(usuarioGuardado.getUsername());
         clienteService.save(clienteModel);
 
-        return "redirect:/login";
+        return "redirect:/";
     }
 }

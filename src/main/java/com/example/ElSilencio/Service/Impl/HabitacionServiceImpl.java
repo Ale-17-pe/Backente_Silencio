@@ -34,6 +34,16 @@ public class HabitacionServiceImpl implements HabitacionService{
     }
 
     @Override
+    public Optional<HabitacionModel> findByNumero(String numero) {
+        return habitacionRepository.findByNumero(numero);
+    }
+
+    @Override
+    public List<HabitacionModel> findByTipo(String tipo) {
+        return habitacionRepository.findByTipo(tipo);
+    }
+
+    @Override
     public HabitacionModel save(HabitacionModel habitacion) {
         return habitacionRepository.save(habitacion);
     }

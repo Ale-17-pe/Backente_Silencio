@@ -2,8 +2,10 @@ package com.example.ElSilencio.Controller;
 
 import com.example.ElSilencio.Model.HabitacionModel;
 import com.example.ElSilencio.Service.HabitacionService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -29,7 +31,10 @@ public class HabitacionController {
     }
 
     @PostMapping("/guardar")
-    public String guardarHabitacion(@ModelAttribute HabitacionModel habitacion) {
+    public String guardarHabitacion(@Valid @ModelAttribute("habitaciones") HabitacionModel habitacion, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "habitaciones/form";
+        }
         habitacionService.save(habitacion);
         return "redirect:/habitaciones";
     }

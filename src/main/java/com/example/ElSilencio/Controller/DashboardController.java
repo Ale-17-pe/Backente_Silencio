@@ -17,6 +17,6 @@ public class DashboardController {
 
     @GetMapping("/cliente/dashboard")
     public String clienteDashboard() {
-        return "cliente/dashboard";
+        return "clientes/dashboard";
     }
 }

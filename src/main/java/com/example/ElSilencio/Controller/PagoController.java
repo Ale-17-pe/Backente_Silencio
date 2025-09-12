@@ -3,8 +3,10 @@ package com.example.ElSilencio.Controller;
 import com.example.ElSilencio.Model.PagoModel;
 import com.example.ElSilencio.Service.PagoService;
 import com.example.ElSilencio.Service.ReservaService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -36,7 +38,11 @@ public class PagoController {
 
     // Guardar pago
     @PostMapping("/guardar")
-    public String guardarPago(@ModelAttribute PagoModel pago) {
+    public String guardarPago(@Valid @ModelAttribute("pago") PagoModel pago, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("reservas", reservaService.findAll());
+            return "pagos/form";
+        }
         pagoService.save(pago);
         return "redirect:/pagos";
     }
