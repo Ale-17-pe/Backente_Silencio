@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Controller;
 
-import com.example.ElSilencio.Model.ClienteModel;
+import com.example.ElSilencio.ClienteModel;
 import com.example.ElSilencio.Service.ClienteService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.naming.Binding;
 
 @Controller
 @RequestMapping("/clientes")

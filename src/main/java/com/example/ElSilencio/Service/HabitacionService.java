@@ -1,6 +1,5 @@
 package com.example.ElSilencio.Service;
 
-import com.example.ElSilencio.Model.ClienteModel;
 import com.example.ElSilencio.Model.HabitacionModel;
 
 import java.util.List;

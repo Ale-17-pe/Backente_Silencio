@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Controller;
 
-import com.example.ElSilencio.Model.ClienteModel;
+import com.example.ElSilencio.ClienteModel;
 import com.example.ElSilencio.Service.ClienteService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -60,16 +60,14 @@ public class HomeController {
         }
 
         model.addAttribute("usuario", clienteLogueado);
-        // Si tienes reservas: model.addAttribute("reservas", reservaService.findByCliente(clienteLogueado));
-
-        return "clientes/dashboard"; // templates/clientes/dashboard.html
+        return "clientes/dashboard";
     }
 
     // Logout
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:admin/dashboard";
     }
 
     // Redirigir botón "Registrarse"

@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Service;
 
-import com.example.ElSilencio.Model.ClienteModel;
+import com.example.ElSilencio.ClienteModel;
 
 import java.util.List;
 import java.util.Optional;

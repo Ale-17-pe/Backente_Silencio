@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Controller;
 
-import com.example.ElSilencio.Model.ClienteModel;
+import com.example.ElSilencio.ClienteModel;
 import com.example.ElSilencio.Model.UsuarioModel;
 import com.example.ElSilencio.Service.ClienteService;
 import com.example.ElSilencio.Service.UsuarioService;
