@@ -1,6 +1,5 @@
 package com.example.ElSilencio.Model;
 
-import com.example.ElSilencio.ClienteModel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +9,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioModel {
+public class    UsuarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

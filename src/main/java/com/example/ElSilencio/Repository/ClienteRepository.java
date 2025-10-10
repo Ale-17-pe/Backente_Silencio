@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Repository;
 
-import com.example.ElSilencio.ClienteModel;
+import com.example.ElSilencio.Model.ClienteModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

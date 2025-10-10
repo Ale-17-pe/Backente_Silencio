@@ -1,6 +1,5 @@
 package com.example.ElSilencio.Model;
 
-import com.example.ElSilencio.ClienteModel;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;

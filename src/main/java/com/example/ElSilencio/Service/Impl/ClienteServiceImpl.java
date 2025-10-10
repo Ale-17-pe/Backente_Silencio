@@ -1,6 +1,6 @@
 package com.example.ElSilencio.Service.Impl;
 
-import com.example.ElSilencio.ClienteModel;
+import com.example.ElSilencio.Model.ClienteModel;
 import com.example.ElSilencio.Repository.ClienteRepository;
 import com.example.ElSilencio.Service.ClienteService;
 import org.springframework.stereotype.Service;

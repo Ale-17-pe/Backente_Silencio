@@ -1,7 +1,5 @@
-    package com.example.ElSilencio;
+    package com.example.ElSilencio.Model;
 
-    import com.example.ElSilencio.Model.ReservaModel;
-    import com.example.ElSilencio.Model.UsuarioModel;
     import jakarta.persistence.*;
     import jakarta.validation.constraints.NotBlank;
     import lombok.*;
