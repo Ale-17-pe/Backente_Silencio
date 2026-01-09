@@ -6,9 +6,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "clientes")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter @Getter
 public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +35,19 @@ public class ClienteModel {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
     private UsuarioModel usuario;
+
+    public ClienteModel(Long id, String nombre, String apellido, String dni, String email, String telefono, String fotoUrl, String username, UsuarioModel usuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
+        this.telefono = telefono;
+        this.fotoUrl = fotoUrl;
+        this.username = username;
+        this.usuario = usuario;
+    }
+
+    public ClienteModel() {
+    }
 }
